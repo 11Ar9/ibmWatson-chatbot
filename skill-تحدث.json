@@ -1,0 +1,472 @@
+{
+  "intents": [
+    {
+      "intent": "اسئله-عنه",
+      "examples": [
+        {
+          "text": "ايش تسوي"
+        },
+        {
+          "text": "شغلك"
+        },
+        {
+          "text": "ماذا تعمل"
+        },
+        {
+          "text": "ماعملك"
+        },
+        {
+          "text": "ماهي خدماتك"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "ترحيب",
+      "examples": [
+        {
+          "text": "سلام"
+        },
+        {
+          "text": "سلام عليكم"
+        },
+        {
+          "text": "مرحبا"
+        },
+        {
+          "text": "هاي"
+        },
+        {
+          "text": "هلا"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "توديع",
+      "examples": [
+        {
+          "text": "الوداع"
+        },
+        {
+          "text": "باي"
+        },
+        {
+          "text": "شكرا لك الى اللقاء"
+        },
+        {
+          "text": "قفل"
+        },
+        {
+          "text": "مع السلامه"
+        },
+        {
+          "text": "وداعا"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "عن-الاصدقاء",
+      "examples": [
+        {
+          "text": "فيه احد غيرك"
+        },
+        {
+          "text": "هل لديك اصدقاء"
+        },
+        {
+          "text": "هل يمكن استبدالك؟"
+        },
+        {
+          "text": "هل يوجد احد اخر معك"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "عن-الحال",
+      "examples": [
+        {
+          "text": "كيف الحال"
+        },
+        {
+          "text": "كيف تشعر"
+        },
+        {
+          "text": "كيفك"
+        },
+        {
+          "text": "ماهي احوالك"
+        },
+        {
+          "text": "هل انت بخير؟"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "مقابله",
+      "examples": [
+        {
+          "text": "اريد ان اقابلك"
+        },
+        {
+          "text": "اريد رؤيتك"
+        },
+        {
+          "text": "سآتي لرؤيتك"
+        },
+        {
+          "text": "هل اقابلك"
+        },
+        {
+          "text": "هل تسمح لي بمقابلتك"
+        },
+        {
+          "text": "هل من الممكن ان اقابلك"
+        },
+        {
+          "text": "هل يمكنني رؤيتك"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "من-هو",
+      "examples": [
+        {
+          "text": "من انت؟"
+        },
+        {
+          "text": "من معي"
+        },
+        {
+          "text": "من يتحدث"
+        },
+        {
+          "text": "هل انت روبوت؟"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": [],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    },
+    "from-sample": true
+  },
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1625469329172",
+      "context": {
+        "time": "@sys-time"
+      },
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_10_1625469329173"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1625469237734",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_2_1625469237764"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ما اليوم المناسب لمقابلتي"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_8_1625469237734",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1625469237764",
+      "previous_sibling": "handler_2_1625469237764"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ما الوقت المناسب لمقابلتي"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_8_1625469329172",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1625469329173",
+      "previous_sibling": "handler_10_1625469329173"
+    },
+    {
+      "type": "standard",
+      "title": "توديع",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "سعدت بالتحدث اليك"
+              },
+              {
+                "text": "مع السلامه"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#توديع",
+      "dialog_node": "node_10_1625468886994",
+      "previous_sibling": "node_2_1625469145747"
+    },
+    {
+      "type": "standard",
+      "title": "ترحيب",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "اهلا معاك الروبوت المساعد واتسون، كيف اخدمك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#ترحيب",
+      "dialog_node": "node_1_1625210968088",
+      "previous_sibling": "مرحبا"
+    },
+    {
+      "type": "frame",
+      "title": "مقابله",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "حسنا تم قبول ذلك.يمكنك لقائي في المقر"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#مقابله",
+      "dialog_node": "node_2_1625469145747",
+      "previous_sibling": "node_3_1625467869991"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "انا الروبوت واتسون للمحادثه العامه اهلا"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#من-هو",
+      "dialog_node": "node_3_1625467869991",
+      "previous_sibling": "node_7_1625467830278"
+    },
+    {
+      "type": "standard",
+      "title": "الاصدقاء",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "لايوجد احد غيري"
+              },
+              {
+                "text": "لا ليس لدي احد اخر"
+              },
+              {
+                "text": "انا فقط"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#عن-الاصدقاء",
+      "dialog_node": "node_5_1625467744951",
+      "previous_sibling": "node_8_1625467593799"
+    },
+    {
+      "type": "standard",
+      "title": "الحال",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "بحال جيده"
+              },
+              {
+                "text": "بخير"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#عن-الحال",
+      "dialog_node": "node_7_1625467830278",
+      "previous_sibling": "node_5_1625467744951"
+    },
+    {
+      "type": "standard",
+      "title": "اسئله عن عمله",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "انا هنا للمحادثه العامه"
+              },
+              {
+                "text": "ليس لدي عمل محدد حادثني كصديق"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#اسئله-عنه",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_8_1625467593799",
+      "previous_sibling": "node_1_1625210968088"
+    },
+    {
+      "type": "slot",
+      "parent": "node_2_1625469145747",
+      "variable": "$date",
+      "dialog_node": "slot_8_1625469237734"
+    },
+    {
+      "type": "slot",
+      "parent": "node_2_1625469145747",
+      "variable": "$time",
+      "dialog_node": "slot_8_1625469329172",
+      "previous_sibling": "slot_8_1625469237734"
+    },
+    {
+      "type": "standard",
+      "title": "أي شيء آخر",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "لم أفهم، يمكنك محاولة اعادة الصياغة"
+              },
+              {
+                "text": "هل يمكنك اعادة صياغة عبارتك؟ أنا لا فهم"
+              },
+              {
+                "text": "لم أفهم قصدك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "أي شيء آخر",
+      "previous_sibling": "node_10_1625468886994",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "مرحبا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مرحبا، كيف يمكنني مساعدتك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "مرحبا"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": ":هل قصدت",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "تحدث",
+  "language": "ar",
+  "description": ""
+}
